@@ -1,0 +1,15 @@
+<svg width="40" height="40" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="robotGradient" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0.25" stop-color="#FFDB6E"/>
+      <stop offset="1" stop-color="#FFBC5E"/>
+    </linearGradient>
+  </defs>
+  <rect x="16" y="12" width="32" height="40" rx="4" fill="url(#robotGradient)"/>
+  <circle cx="24" cy="28" r="3" fill="#000"/>
+  <circle cx="40" cy="28" r="3" fill="#000"/>
+  <rect x="24" y="38" width="16" height="4" rx="2" fill="#000"/>
+  <rect x="30" y="4" width="4" height="8" fill="url(#robotGradient)"/>
+  <circle cx="16" cy="32" r="2" fill="url(#robotGradient)"/>
+  <circle cx="48" cy="32" r="2" fill="url(#robotGradient)"/>
+</svg>

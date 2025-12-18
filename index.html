@@ -1,835 +1,878 @@
-<!-- <!DOCTYPE html> -->
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>vCard - Personal Portfolio</title>
 
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-PGZH8HT');</script>
-  <!-- End Google Tag Manager -->
+  <!--
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
 
-  <!-- Materialize - Compiled and minified CSS-->
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/css/materialize.min.css" />
-  <!-- Font Awesome Icon - CSS-->
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
-  <!-- Custom Styles-->
-  <link rel="stylesheet" href="/assets/css/style.css" />
-  <link rel="shortcut icon" href="assets/img/favim.png" type="image/x-png">
-  <title>Mert Koçak | Data Scientist</title>
+  <!--
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/css/style.css">
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126939217-2"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
+  <!--
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-    gtag('config', 'UA-126939217-2');
-  </script>
-
-  <!-- Open Graph-->
-  <meta property="og:locale" content="en_US" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Mert Koçak | Data Scientist" />
-  <meta property="og:description" content="Data Scientist" />
-  <meta property="og:url" content="https://benmertkocak.github.io/" />
-  <meta property="og:site_name" content="Mert Koçak | Data Scientist" />
-  <meta property="article:publisher" content="https://benmertkocak.github.io/" />
-  
-  <!-- Google Site Verification for indexing -->
-  <meta name="google-site-verification" content="_qxK8tePiU2fhnwlwnJ7pkDFnj1k2EiKq_cYGy1Cb84" />
+  <style>
+    /* Sayfa yüklenirken scroll pozisyonunu kontrol et */
+    html {
+      scroll-behavior: auto !important;
+      overflow-x: hidden;
+    }
+    
+    /* Particles.js için temel stiller */
+    body {
+      position: relative;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    
+    /* Sayfa yüklenene kadar scroll'u kontrol et */
+    body.loading {
+      overflow: hidden !important;
+    }
+    #particles-js {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background-color: #000000;
+      z-index: -1;
+    }
+    
+    /* Arka plan renkleri */
+    .sidebar, .main-content, .navbar, .article-title, .about, .resume, .portfolio, .blog, .contact {
+      background-color: #1d1d1d !important;
+    }
+    .service-item, .timeline-item, .clients-item, .project-item, .testimonials-item, .blog-post-item,
+    .content-card {
+      background-color: #1d1d1d !important;
+    }
+    .modal-container {
+      background-color: #1d1d1d !important;
+    }
+    .skills-list {
+      background-color: #1d1d1d !important;
+    }
+    
+    /* Responsive düzenlemeler - Mobil görünüm */
+    @media (max-width: 1249px) {
+      .sidebar {
+        position: static;
+        flex-shrink: 0;
+      }
+      .main-content {
+        margin-top: 15px;
+      }
+    }
+    
+    /* Masaüstü görünümü düzenlemeleri */
+    @media (min-width: 1250px) {
+      /* CSS dosyasındaki flex düzenini kullan, override yapma */
+      main {
+        position: relative;
+        z-index: 2;
+        background: transparent;
+      }
+      article {
+        background: transparent;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PGZH8HT"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe>
-  </noscript>
-  
-  <!-- Navigation Menu-->
-  <!-- Nav class 1 -->
-  <nav class="hide-on-small-only">
-    <ul class="side-nav fixed section table-of-contents">
+  <div id="particles-js"></div>
 
-      <li class="logo">
-        <a id="logo-container" aria-label="Navigate to the beginning of the page" href="#intro"
-          class="brand-logo grey-blue-text">
-          <img src="/assets/img/mertkocak.jpg" class="circle img-responsive profile-pic" alt="avatar" style="width: 130px; height:200 px; border-radius: 50%;">
-        </a>
-      </li>
+  <!--
+    - #MAIN
+  -->
 
-      <li class="bold">
-        <a aria-label="Navigate to the About section" href="#about" class="waves-effect waves-dark teal-text"><i
-            class="mdi-social-person small"></i><span>About</span></a>
-      </li>
-      <li class="bold">
-        <a aria-label="Navigate to the Experience section" href="#experience"
-          class="waves-effect waves-dark teal-text"><i
-            class="mdi-action-trending-up small"></i><span>Experience</span></a>
-      </li>
-
-      <li class="bold">
-        <!-- mdi-av-web small
-             mdi-av-my-library-books small-->
-        <a aria-label="Navigate to the Projects section" href="#projects" class="waves-effect waves-dark teal-text"><i
-            class="mdi-av-my-library-books small"></i><span>Projects</span></a>
-      </li>
-
-      <li class="bold">
-        
-        <a aria-label="Navigate to the Skills section" href="#skills" class="waves-effect waves-dark teal-text"><i
-            class="mdi-action-assessment small"></i><span>Skills</span></a>
-      </li>
-
-      <li class="bold">
-        <a aria-label="Navigate to the Education section" href="#education" class="waves-effect waves-dark teal-text"><i
-            class="mdi-social-school small"></i><span>Education</span></a>
-      </li> 
-
-      <li class="bold">
-        
-        <a aria-label="Navigate to the Contact section" href="#contact" class="waves-effect waves-dark teal-text"><i
-            class="mdi-content-mail small"></i><span>Contact</span></a>
-      </li>
-
-      <li class="bold">
-        <a aria-label="Open Mert's resume in a new tab" href="https://benmertkocak.github.io/assets/resume/MERT_KOÇAK.pdf" target="_blank"
-        class="waves-effect waves-dark teal-text"><i class="mdi-file-folder-open small"></i><span>Resume</span></a>  
-      </li>
-    </ul>
-  </nav>
-
-  <!-- Nav class 2 -->
-  <nav class="hide-on-large only trigger z-depth-1">
-    <a aria-label="Toggle visibility of the mobile navbar" href="#" data-activates="slide-out"
-      class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-    <div class="name-title">
-      <a id="name" aria-label="Navigate to the beginning of the page" href="#" class="teal-text">Mert
-        Koçak</a><span class="black-text">Data Scientist</span>
-    </div>
-  </nav>
-
-  <!-- Nav class 3 -->
-  <nav class="hide-on-large only">
-    <ul id="slide-out" class="side-nav">
-      <li class="bold">
-        <a aria-label="Navigate to the About section" href="#about" class="waves-effect waves-dark teal-text"><i
-            class="mdi-social-person small"></i><span>About</span></a>
-      </li>
-      <li class="bold">
-        <a aria-label="Navigate to the Experience section" href="#experience"
-          class="waves-effect waves-dark teal-text"><i
-            class="mdi-action-trending-up small"></i><span>Experience</span></a>
-      </li>
-      <li class="bold">
-        <a aria-label="Navigate to the Projects section" href="#projects" class="waves-effect waves-dark teal-text"><i
-            class="mdi-av-my-library-books small"></i><span>Projects</span></a>
-      </li>
-      <li class="bold">
-        <a aria-label="Navigate to the Skills section" href="#skills" class="waves-effect waves-dark teal-text"><i
-            class="mdi-action-assessment small"></i><span>Skills</span></a>
-      </li>
-
-      <li class="bold">
-        <a aria-label="Navigate to the Education section" href="#education" class="waves-effect waves-dark teal-text"><i
-            class="mdi-social-school small"></i><span>Education</span></a>
-      </li>
-      <li class="bold">
-        <a aria-label="Navigate to the Contact section" href="#contact" class="waves-effect waves-dark teal-text"><i
-            class="mdi-content-mail small"></i><span>Contact</span></a>
-      </li>
-    </ul>
-  </nav>
-
-  <!-- Main Content-->
   <main>
-    <!-- First Section: Heading lines and image -->
-    <section id="intro" class="section scrollspy full-height">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="col-md-9">
-          <div class="content section-padding valign" style="margin-left: 10%; margin-top: 50px;">
-            <div class="caption">
-              <h2>Hi, I'm <span class="teal">Mert Koçak.</span></h2>
-              <h5 style="color:#fff">A <span class="typing" style="font-weight: 300; color:#001c4d"></span></h5>
-              
-              <h5>A data scientist with a curious mind, self-directed, quick starter, passionate, loves to learn and enjoys solving complex and challenging real-world problems.</h5>
-            </div>
-            <div class="social">
-              <a href="http://linkedin.com/in/mert-kocak/" target="_blank">
-                <button class="icon-btn linkedin">
-                  <i class="fa fa-linkedin"></i>
-                </button>
-              </a>
-              <a href="https://github.com/benmertkocak" target="_blank">
-                <button class="icon-btn github">
-                  <i class="fa fa-github"></i>
-                </button>
-              </a>
-            </div>
-            <div class='buttons'>
-              <a href="#about" class="readme">Read More</a>
-              <a href="#contact" class="contactme">Contact Me</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- Second Section: About -->
-    <section id="about" class="section scrollspy">
-      <h3 class="page-title white-text teal">About</h3>
-      <div class="container flow-text">       
-        <p>
-          I graduated from management information systems undergraduate program and I am currently pursuing my master's degree in data science.<br> After graduation, my interest turned towards Python, data science, machine learning and artificial intelligence. This journey led me to take various trainings in these fields and take part in effective projects. During my trainings and projects, I had the opportunity to meet a wide network. I am actively doing projects and participating in competitions in python, machine learning and data science.As an effective, disciplined, dedicated and teamwork-loving person, I want to create added value and improve myself while working.
-        </p>
-        <p>
+    <!--
+      - #SIDEBAR
+    -->
+
+    <aside class="sidebar" data-sidebar>
+
+      <div class="sidebar-info">
+
+        <figure class="avatar-box">
+          <img src="./assets/images/mertkocak.jpg" alt="Mert Kocak" width="80">
+        </figure>
+
+        <div class="info-content">
+          <h1 class="name" title="Mert Koçak">Mert Koçak</h1>
+
+          <p class="title">DATA SCIENTIST</p>
+        </div>
+
+        <button class="info_more-btn" data-sidebar-btn>
+          <span>Show Contacts</span>
+
+          <ion-icon name="chevron-down"></ion-icon>
+        </button>
+
+      </div>
+
+      <div class="sidebar-info_more">
+
+        <div class="separator"></div>
+
+        <ul class="contacts-list">
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Email</p>
+
+              <a href="mailto:merrtkocak@outlook.com" class="contact-link">merrtkocak@outlook.com</a>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="phone-portrait-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Phone</p>
+
+              <a href="tel:+905443632457" class="contact-link">+90 (544) 363 2457</a>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="calendar-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Birthday</p>
+
+              <time datetime="1999-08-24">August 24, 1999</time>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="location-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Location</p>
+
+              <address>Samsun, Turkey</address>
+            </div>
+
+          </li>
+
+        </ul>
+
+        <!-- Sosyal medya ikonları -->
+        <div class="social-links">
           <ul>
-            <li><b>Languages:</b> Python, R, C++, HTML/CSS</li>
-            <li><b>Data Analysis:</b> NumPy, Pandas</li>
-            <li><b>Data Visualization:</b> Matplotlib, Seaborn, PowerBI, Tableu</li>
-            <li><b>Machine Learning/Computer Vision:</b> TensorFlow, Scikit-learn, YOLO, OpenCV, Pillow, Streamlit</li>
-            <li><b>Database Management:</b> SQL, AWS</li>
+            <li>
+              <a href="https://www.linkedin.com/in/mert-kocak/" target="_blank" title="LinkedIn Profile">
+                <ion-icon name="logo-linkedin"></ion-icon>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.github.com/benmertkocak" target="_blank" title="GitHub Profile">
+                <ion-icon name="logo-github"></ion-icon>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.kaggle.com/benmertkocak" target="_blank" title="Kaggle Profile">
+                <ion-icon name="analytics-outline"></ion-icon>
+              </a>
+            </li>
           </ul>
-          
-        </p>
-        <p>
-          Above are all the skills I have been working on with real life projects.
-        </p>
-      </div>
-    </section>
-
-
-    <!-- Third Section: Experience -->
-    <section id="experience" class="section scrollspy">
-      <h3 class="page-title white-text teal">Experience</h3>
-      <div class="container">
-
-        <!-- Latest Experience -->
-        <div class="card">
-          <div class="card-content">
-            <div class="row">
-              <div class="col s12 m2">
-                <a href="https://miuul.com/data-scientist-bootcamp" target="_blank"><img alt="miuul-Logo"
-                    src="https://miuul.com/image/theme/logo-dark.png" class="responsive-img center-block" /></a>
-              </div>
-
-              <div class="col s12 m10">
-                <p>
-                  <span class="card-title"><a href="https://miuul.com/data-scientist-bootcamp" target="_blank"
-                      class="teal-text hoverline">MİUUL</a></span>
-                </p>
-              </div>
-            </div>
-            <div class="role brown-text text-darken-2">Data Scientist Bootcamp Participant</div>
-            <ul>
-              <li>
-                Together with mentors and a large data science network, I tackled real-world problems and created solutions in this 200+ hour bootcamp.
-              </li>
-              <li>
-                I worked on and successfully completed in-depth studies, case studies and more than 10+ real-life projects.
-              </li>
-              <li>
-                For my final project, I worked end-to-end on Spotify data and predicted the popularity rate of a new song.
-              </li>
-              <li>
-                All the topics I was interested in during the bootcamp:
-                Python Programming for Data Science,
-                CRM Analytics,
-                Measurement Problems,
-                Recommendation System,
-                Future Engineering,
-                Machine Learning,
-                Querying MS SQL.
-              </li>
-              <li>
-                <b>Tools:</b> Python, NumPy, Pandas, Matplotlib, Seaborn, PowerBI, Tableu, TensorFlow, Scikit-learn, YOLO, OpenCV, Pillow, Streamlit, SQL
-              </li>
-            </ul>
-          </div>
-          <div class="card-action">
-            <span>September 2023 - December 2023 | Remote, Full-Time , Turkey</span>
-          </div>
         </div>
 
-
-        <div class="card">
-          <div class="card-content">
-            <div class="row">
-              <div class="col s12 m2">
-                <a href="https://www.bilisimschool.com/" target="_blank"><img alt="Bilisim-Logo"
-                    src="https://bilisimschool.com/wp-content/uploads/2022/05/Logo.webp" class="responsive-img center-block" /></a>
-              </div>
-
-              <div class="col s12 m10">
-                <p>
-                  <span class="card-title"><a href="https://www.bilisimschool.com/" target="_blank"
-                      class="teal-text hoverline">BİLİŞİM SCHOOL</a></span>
-                </p>
-              </div>
-            </div>
-            <div class="role brown-text text-darken-2">Freelance Python Tutor</div>
-            <ul>
-              <li>
-                I left my current job to gain more experience and skills with a focus on data science and continued teaching python only as a freelancer.
-              </li>
-              <li>
-                <b>Tools:</b> Python
-              </li>
-            </ul>
-          </div>
-          <div class="card-action">
-            <span>December 2023 - NOW | Remote, Freelance , Turkey</span>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-content">
-            <div class="row">
-              <div class="col s12 m2">
-                <a href="https://www.bilisimschool.com/" target="_blank"><img alt="Bilisim-Logo"
-                    src="https://bilisimschool.com/wp-content/uploads/2022/05/Logo.webp" class="responsive-img center-block" /></a>
-              </div>
-
-              <div class="col s12 m10">
-                <p>
-                  <span class="card-title"><a href="https://www.bilisimschool.com/" target="_blank"
-                      class="teal-text hoverline">BİLİŞİM SCHOOL</a></span>
-                </p>
-              </div>
-            </div>
-            <div class="role brown-text text-darken-2">Python Tutor</div>
-            <ul>
-              <li>
-                I have taught Python language and basic programming to students. I have guided students at different levels from beginner to advanced.
-              </li>
-              <li>
-                By emphasizing practical applications while learning Python, I helped students develop skills to solve real-world problems. I encouraged students to develop projects by adopting a project-based learning approach.
-              </li>
-              <li>
-                I taught students debugging skills in Python code and strategies to make their code more efficient. I used Python's debugging tools and profiling techniques.
-              </li>
-              <li>
-                I have participated and contributed to open source Python projects to support my own development and contribute to the Python community.
-              </li>
-              <li>
-                <b>Tools:</b> Python
-              </li>
-            </ul>
-          </div>
-          <div class="card-action">
-            <span>August 2023 - December 2023 | Remote, Part-Time , Turkey</span>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-content">
-            <div class="row">
-              <div class="col s12 m2">
-                <a href="https://globalaihub.com/akbank-python-bootcamp/" target="_blank"><img alt="Akbank-Logo"
-                    src="/assets/img/Akbank-Logo.png" class="responsive-img center-block" /></a>
-              </div>
-
-              <div class="col s12 m10">
-                <p>
-                  <span class="card-title"><a href="https://globalaihub.com/akbank-python-bootcamp/" target="_blank"
-                      class="teal-text hoverline">AKBANK x GLOBAL AI HUB</a></span>
-                </p>
-              </div>
-            </div>
-            <div class="role brown-text text-darken-2">Python Bootcamp Participant</div>
-            <ul>
-              <li>
-                I learned the Python programming language from basic to advanced.
-              </li>
-              <li>
-                With the help of mentors, I focused on new libraries and put them into practice.
-              </li>
-              <li>At the end of the bootcamp, I successfully completed the "Pizza Order System" project, which is the graduation project requested from us, using what I learned during the bootcamp and graduated from the bootcamp.</li>
-              <li>
-                <b>Tools:</b> Python
-              </li>
-            </ul>
-          </div>
-          <div class="card-action">
-            <span>FEBRUARY 2023 - MARCH 2023 | Online , Turkey</span>
-          </div>
-        </div>
-
+        <div class="separator"></div>
 
       </div>
-    </section>
 
-    <!-- Fourth Section: Projects -->
-    <section id="projects" class="section scrollspy">
-      <h3 class="page-title white-text teal">Projects</h3>
-      <div class="container">
-        <div class="row">
+    </aside>
 
-            <div class="col s12 m6 l4">
-            <div class="card medium">
-              <div class="card-image waves-effect waves-block waves-light">
-                <img alt="password generator" src="/assets/img/githubkaggle.png"
-                style="height: 100%; width: 100%" class="activator" />
+
+
+
+
+    <!--
+      - #main-content
+    -->
+
+    <div class="main-content">
+
+      <!--
+        - #ABOUT
+      -->
+
+      <article class="about active" data-page="about">
+
+        <header>
+          <h2 class="h2 article-title">About me</h2>
+        </header>
+
+        <section class="about-text">
+          <p>
+            During my university education, I explored various programming languages and took part in
+            numerous projects. After graduation, my interest turned towards Python, data science, machine
+            learning and artificial intelligence. This journey led me to take various trainings in these fields
+            and take part in effective projects. During my trainings and projects, I had the opportunity to
+            meet a wide network. I am actively doing projects and participating in competitions in python,
+            machine learning and data science. As an effective, disciplined, dedicated and teamwork-loving
+            person, I want to create added value and improve myself while working.
+          </p>
+        </section>
+
+
+        <!--
+          - service
+        -->
+
+        <section class="service">
+
+          <h3 class="h3 service-title">What i'm doing</h3>
+
+          <ul class="service-list">
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-design.svg
+                " alt="Data Analysis icon" width="40">
               </div>
-              <div class="card-content">
-                <span class="card-title activator teal-text hoverline">More data science projects <i
-                    class="mdi-navigation-more-vert right"></i></span>
-                <p>
-                  Please visit my kaggle and github profiles for various data analysis, visualizations, machine learning models.
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Data Analysis & Exploration</h4>
+
+                <p class="service-item-text">
+                  Collecting, cleaning, and transforming raw data into meaningful insights.
                 </p>
               </div>
-              <div class="card-reveal">
 
-                <span class="card-title teal-text"><small>Accomplishments</small><i
-                    class="mdi-navigation-close right"></i></span>
-                <ul>
-                  <li>You can reach my kaggle and github profiles with the buttons at the bottom.</li>
+            </li>
 
-                </ul>
-                <div class="card-action">
-                  <a aria-label="Visit the GitHub repo for  project" href="https://github.com/benmertkocak"
-                    target="_blank" data-position="top" data-tooltip="View Source"
-                    class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-                      class="fa fa-github"></i>
-                  </a>
+            <li class="service-item">
 
-                  <a aria-label="Visit the Kaggle repo for  project" href="https://www.kaggle.com/benmertkocak"
-                    target="_blank" data-position="top" data-tooltip="View Source"
-                    class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-                      class="fa fa-database"></i></a>
-                </div>
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-dev.svg" alt="Machine Learning icon" width="40">
               </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Machine Learning Model Development</h4>
+
+                <p class="service-item-text">
+                  Building, training, and evaluating predictive models for various tasks.
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-app.svg" alt="Data Visualization icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Data Visualization</h4>
+
+                <p class="service-item-text">
+                  Creating compelling visualizations to communicate complex data patterns.
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-photo.svg" alt="Big Data icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Big Data Processing</h4>
+
+                <p class="service-item-text">
+                  Handling and processing large datasets using appropriate tools and technologies.
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/brain.svg" alt="Brain icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Artificial Intelligence</h4>
+
+                <p class="service-item-text">
+                  Developing and applying AI algorithms and models to solve complex problems.
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-crm.svg" alt="CRM icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Customer Relationship Management</h4>
+
+                <p class="service-item-text">
+                  Implementing and managing CRM systems to enhance customer interactions and business processes.
+                </p>
+              </div>
+
+            </li>
+
+          </ul>
+
+        </section>
+
+      </article>
+
+
+
+
+
+      <!--
+        - #RESUME
+      -->
+
+      <article class="resume" data-page="resume">
+
+        <header>
+          <h2 class="h2 article-title">Resume</h2>
+        </header>
+
+        <section class="timeline">
+
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="book-outline"></ion-icon>
             </div>
+
+            <h3 class="h3">Education</h3>
           </div>
 
-          <div class="col s12 m6 l4">
-            <div class="card medium">
-              <div class="card-image waves-effect waves-block waves-light">
-                <img alt="spotify app" src="/assets/img/spotify.png" style="height: 100%; width: 100%" class="activator" />
-              </div>
-              <div class="card-content">
-                <span class="card-title activator teal-text hoverline">Spotify Song Popularity Predictor<i
-                    class="mdi-navigation-more-vert right"></i></span>
-                <p>
-                  A ml model that predicts how popular a new song will be before it is even uploaded to Spotify.
-                </p>
-              </div>
-              <div class="card-reveal">
-                <span class="card-title grey-text"><small>Accomplishments</small><i
-                    class="mdi-navigation-close right"></i></span>
-                <ul>
-                  <li><b>Tools:</b> python, numpy, pandas, seaborn, plotly, matplotlib, catboost, lightgbm, dash</li>
-                  <li>This project aims to predict the popularity levels of newly uploaded songs on Spotify using data analysis performed on songs by artists who have entered the Spotify Top 50 list in the last 3 years and a CatBoost model.</li>
+          <ol class="timeline-list">
 
+            <li class="timeline-item">
 
+              <h4 class="h4 timeline-item-title">Ondokuz Mayıs University</h4>
 
-                </ul>
-                <div class="card-action">
-                  <a aria-label="Visit the GitHub repo for  project" href="https://github.com/benmertkocak/spotify_new_song_popularity_prediction"
-                    target="_blank" data-position="top" data-tooltip="View Source"
-                    class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-                      class="fa fa-github"></i></a>
-                </div>
-              </div>
+              <span>February 2024 - July 2025</span>
+
+              <p class="timeline-text">
+                Master's Degree, Data Science - Samsun, Turkey
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Aksaray University</h4>
+
+              <span>September 2018 - June 2022</span>
+
+              <p class="timeline-text">
+                Bachelor's degree, Management Information Systems - Aksaray, Turkey
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Altınkaya Anatolian High School</h4>
+
+              <span>September 2013 - June 2017</span>
+
+              <p class="timeline-text">
+                Samsun, Turkey
+              </p>
+
+            </li>
+
+          </ol>
+
+        </section>
+
+        <section class="timeline">
+
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="book-outline"></ion-icon>
             </div>
+
+            <h3 class="h3">Experience</h3>
           </div>
 
-          <div class="col s12 m6 l4">
-            <div class="card medium">
-              <div class="card-image waves-effect waves-block waves-light">
-                <img alt="sppe deteciton" src="/assets/img/speedde.png" style="height: 100%; width: 100%" class="activator" />
+          <ol class="timeline-list">
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">COLIN'S – Data Scientist</h4>
+
+              <span>April 2024 – NOW</span>
+
+              <p class="timeline-text">
+                <!-- Açıklama görselde yoktu, boş bırakılıyor veya isterseniz ekleyebiliriz -->
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">BILISIM SCHOOL – Python Tutor (Freelance)</h4>
+
+              <span>December 2023 – March 2024</span>
+
+              <p class="timeline-text">
+                <!-- Açıklama görselde yoktu, boş bırakılıyor veya isterseniz ekleyebiliriz -->
+              </p>
+
+            </li>
+
+             <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">BILISIM SCHOOL – Python Tutor</h4>
+
+              <span>August 2023 – December 2023</span>
+
+              <p class="timeline-text">
+                I have taught Python language and basic programming to students. I have guided students at different
+                levels from beginner to advanced.
+                By emphasizing practical applications while learning Python, I helped students develop skills to solve
+                real-world problems. I encouraged students to develop projects by adopting a project-based learning
+                approach.
+                I taught students debugging skills in Python code and strategies to make their code more efficient. I
+                used Python's debugging tools and profiling techniques.
+                I have participated and contributed to open source Python projects to support my own development
+                and contribute to the Python community.
+              </p>
+
+            </li>
+
+          </ol>
+
+        </section>
+
+        <section class="skill">
+
+          <h3 class="h3 skills-title">My skills</h3>
+
+          <ul class="skills-list content-card" style="height: auto !important; min-height: 100%;">
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Python</h5>
+                <data value="90">90%</data>
               </div>
-              <div class="card-content">
-                <span class="card-title activator teal-text hoverline">Speed Detection System<i
-                    class="mdi-navigation-more-vert right"></i></span>
-                <p>
-                   The speed of passing vehicles is recorded and photographs are taken of vehicles that do not comply with the speed limit.
-                </p>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 90%;"></div>
               </div>
-              <div class="card-reveal">
-                <span class="card-title grey-text"><small>Accomplishments</small><i
-                    class="mdi-navigation-close right"></i></span>
-                <ul>
-                  <li><b>Tools:</b> Python (3.18+), Numpy, OpenCV</li>
-                  <li><b>Features:</b><br>
-                      -Real-time vehicle detection and speed measurement. <br>
-                      -Recording photos of vehicles exceeding the set speed limit.<br>
-                      -Storing traffic pass records in the TrafficRecord folder.</li>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Machine Learning</h5>
+                <data value="85">85%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 85%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Data Science</h5>
+                <data value="85">85%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 85%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Data Analysis & Visualization</h5>
+                <data value="80">80%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 80%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Artificial Intelligence</h5>
+                <data value="75">75%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 75%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Big Data Processing</h5>
+                <data value="70">70%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 70%;"></div>
+              </div>
+
+            </li>
+
+          </ul>
+
+        </section>
+
+      </article>
 
 
-                </ul>
-                <div class="card-action">
-                  <a aria-label="Visit the GitHub repo for  project" href="https://github.com/benmertkocak/speed_detection_system"
-                    target="_blank" data-position="top" data-tooltip="View Source"
-                    class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-                      class="fa fa-github"></i></a>
-                </div>
+
+
+
+      <!--
+        - #PORTFOLIO
+      -->
+
+      <article class="portfolio" data-page="portfolio">
+
+        <header>
+          <h2 class="h2 article-title">Portfolio</h2>
+        </header>
+
+        <section class="projects">
+
+          <ul class="filter-list">
+
+            <li class="filter-item">
+              <button class="active" data-filter-btn>All</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn>Machine Learning</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn>Data Science</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn>Python</button>
+            </li>
+
+          </ul>
+
+          <div class="filter-select-box">
+
+            <button class="filter-select" data-select>
+
+              <div class="select-value" data-selecct-value>Select category</div>
+
+              <div class="select-icon">
+                <ion-icon name="chevron-down"></ion-icon>
               </div>
-            </div>
+
+            </button>
+
+            <ul class="select-list">
+
+              <li class="select-item">
+                <button data-select-item>All</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item>Machine Learning</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item>Data Science</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item>Python</button>
+              </li>
+
+            </ul>
+
           </div>
-          <div class="col s12 m6 l4">
-            <div class="card medium">
-              <div class="card-image waves-effect waves-block waves-light">
-                <img alt="sppe deteciton" src="/assets/img/cltv.jpg" style="height: 100%; width: 100%" class="activator" />
-              </div>
-              <div class="card-content">
-                <span class="card-title activator teal-text hoverline">CRM-RFM-CLTV Prediction Analysis<i
-                    class="mdi-navigation-more-vert right"></i></span>
-                <p>
-                   RFM analysis, BG-NBD, and the Gamma-Gamma model were used.
-                </p>
-              </div>
-              <div class="card-reveal">
-                <span class="card-title grey-text"><small>Accomplishments</small><i
-                    class="mdi-navigation-close right"></i></span>
-                <ul>
-                  <li><b>Tools:</b> datetime, pandas, matplotlib, seaborn, lifetimes</li>
-                  <li>
-                    This project focuses on analyzing customer value for a retail business through advanced statistical models. By leveraging RFM (Recency, Frequency, Monetary) analysis, BG-NBD (Beta-Geometric/Negative Binomial Distribution), and the Gamma-Gamma model, we aim to understand and predict the Customer Lifetime Value (CLTV).
-                  </li>
+
+          <ul class="project-list" id="github-projects">
+            <!-- GitHub repositories will be loaded here dynamically -->
+            <li class="project-item active" style="text-align: center; padding: 40px;">
+              <p style="color: var(--light-gray);">Loading GitHub repositories...</p>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </article>
 
 
-                </ul>
-                <div class="card-action">
-                  <a aria-label="Visit the GitHub repo for  project" href="https://github.com/benmertkocak/CRM-RFM-CLTV-Prediction-Analysis"
-                    target="_blank" data-position="top" data-tooltip="View Source"
-                    class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-                      class="fa fa-github"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col s12 m6 l4">
-            <div class="card medium">
-              <div class="card-image waves-effect waves-block waves-light">
-                <img alt="pizza ordering app" src="/assets/img/pizza-ordering.jpg" style="height: 100%; width: 100%" class="activator" />
-              </div>
-              <div class="card-content">
-                <span class="card-title activator teal-text hoverline">Pizza Ordering System<i
-                    class="mdi-navigation-more-vert right"></i></span>
-                <p>
-                  I prepared a pizza ordering system using the Python programming language and Datetime and CSV libraries.
-                </p>
-              </div>
-              <div class="card-reveal">
-                <span class="card-title grey-text"><small>Accomplishments</small><i
-                    class="mdi-navigation-close right"></i></span>
-                <ul>
-                  <li><b>Tools:</b> Python ( datetime, csv, tkinter)</li>
-                  <li>This project is a sample application developed using modern technologies such as Python.</li>
-                  
 
 
-                </ul>
-                <div class="card-action">
-                  <a aria-label="Visit the GitHub repo for  project" href="https://github.com/benmertkocak/akbank-globalaihub-python-project"
-                    target="_blank" data-position="top" data-tooltip="View Source"
-                    class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-                      class="fa fa-github"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
 
-          <div class="col s12 m6 l4">
-            <div class="card medium">
-              <div class="card-image waves-effect waves-block waves-light">
-                <img alt="weather-app" src="/assets/img/weather-app.jpg" style="height: 100%; width: 100%" class="activator" />
-              </div>
-              <div class="card-content">
-                <span class="card-title activator teal-text hoverline">Weather App<i
-                    class="mdi-navigation-more-vert right"></i></span>
-                <p>
-                  An application where you can access location information or the weather of the desired location.
-                </p>
-              </div>
-              <div class="card-reveal">
+      <!--
+        - #BLOG
+      -->
+
+      <article class="blog" data-page="blog">
+
+        <header>
+          <h2 class="h2 article-title">Blog</h2>
+        </header>
+
+        <section class="blog-posts">
+
+          <ul class="blog-posts-list" id="blog-posts-list">
+            <!-- Blog yazıları JavaScript ile yüklenecek -->
+          </ul>
+
+          <!-- Pagination Controls -->
+          <div id="blog-pagination-controls" class="pagination-controls"></div>
+
+        </section>
+
+      </article>
+
+
+
+
+
+      <!--
+        - #CONTACT
+      -->
+
+      <article class="contact" data-page="contact">
+
+        <header>
+          <h2 class="h2 article-title">Contact</h2>
+        </header>
+
+        <section class="mapbox" data-mapbox>
+          <figure>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d385398.5897809314!2d28.731994399999998!3d41.0049823!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caa7040068086b%3A0xe1ccfe98bc01b0d0!2zxLBzdGFuYnVs!5e0!3m2!1str!2str!4v1716523456789!5m2!1str!2str"
+              width="400" height="300" loading="lazy"></iframe>
+          </figure>
+        </section>
+
+        <section class="contact-form">
+
+          <h3 class="h3 form-title">Contact Form</h3>
+
+          <form action="https://formspree.io/f/xjgbbnlr" method="POST">
+
+            <div class="input-wrapper">
+              <label>
                 
-                <span class="card-title grey-text"><small>Accomplishments</small><i
-                    class="mdi-navigation-close right"></i></span>
-                <ul>
-                  <li><b>Tools:</b> Python (tkinter, geocoder, requests)</li>
-                  <li>This Python code creates an interface that uses the OpenWeatherMap API to retrieve weather data using the tkinter and PIL libraries.</li>
-
-                </ul>
-                <div class="card-action">
-                  <a aria-label="Visit the GitHub repo for  project" href="https://github.com/benmertkocak/weather-app"
-                    target="_blank" data-position="top" data-tooltip="View Source"
-                    class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-                      class="fa fa-github"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-          <div class="col s12 m6 l4">
-            <div class="card medium">
-              <div class="card-image waves-effect waves-block waves-light">
-                <img alt="password generator" src="/assets/img/flappybird.png"
-                style="height: 100%; width: 100%" class="activator" />
-              </div>
-              <div class="card-content">
-                <span class="card-title activator teal-text hoverline">Real Life Flappy Bird Game<i
-                    class="mdi-navigation-more-vert right"></i></span>
-                <p>
-                  We control our character with our face in our artificial intelligence game that we created using Unity and OpenCV.
-                </p>
-              </div>
-              <div class="card-reveal">
+                <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
+              </label>
+              <label>
                 
-                <span class="card-title teal-text"><small>Accomplishments</small><i
-                    class="mdi-navigation-close right"></i></span>
-                <ul>
-                  <li><b>Tools:</b> C++, Unity, OpenCV</li>
-                  <li>Game Goal: We try to overcome the obstacles in front of us by moving our face up and down. If we hit the obstacle, it's game over.</li>
-                </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Fifth Section: Skills -->
-    <section id="skills" class="section scrollspy">
-      <h3 class="page-title white-text teal">Skills</h3>
-      <div class="container">
-        <!-- Languages and Databases -->
-        <div class="card">
-          <div class="card-content">
-            <h4 class="brown-text light">Languages and Databases</h4>
-            <div class="row text-center">
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/python-logo-1-300x300.jpg" class="responsive-img" />Python
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/r_logo.webp" class="responsive-img" />R
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/Sql_data_base_with_logo.png" class="responsive-img" />SQL
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/html5-300x300.jpg" class="responsive-img" />HTML5
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/css3-300x300.jpg" class="responsive-img" />CSS3
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-content">
-            <h4 class="brown-text light">Libraries</h4>
-            <div class="row text-center">
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/numpy-logo-1-500x500.jpg" class="responsive-img" />NumPy
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/pandas-logo-2-500x500.jpg" class="responsive-img" />Pandas
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/seaborn.png" class="responsive-img" />Seaborn
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/SciPy.png" class="responsive-img" />SciPy
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/Plotly.png" class="responsive-img" />Plotly
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/opencv-logo-1-500x500.jpg" class="responsive-img" />OpenCV
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/sk-learn-logo-1-500x500.jpg" class="responsive-img" />scikit-learn
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/matplotlib-logo-1-500x500.jpg" class="responsive-img" />matplotlib
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/Beautiful Soup.webp" class="responsive-img" />BeautifulSoup
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/Scrapy.jpg" class="responsive-img" />Scrapy
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Frameworks -->
-        <div class="card">
-          <div class="card-content">
-            <h4 class="brown-text light">Frameworks</h4>
-            <div class="row text-center">
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/keras-logo.png" class="responsive-img" />Keras
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/tensorflow-logo-1.png" class="responsive-img" />TensorFlow
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/pytorch-logo.png" class="responsive-img" />PyTorch
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/Streamlit.png" class="responsive-img" />Streamlit
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- Seventh Section: Education -->
-    <section id="education" class="section scrollspy">
-      <h3 class="page-title white-text teal">Education</h3>
-      <div class="container">
-        <div class="row">
-          <!-- Education -->
-          <div class="col s12 m6 l6">
-            <div class="card">
-              <div class="card-content">
-                <p>
-                  <span class="card-title"><a href="https://www.omu.edu.tr/tr" target="_blank" class="teal-text hoverline">ONDOKUZ MAYIS UNIVERSITY</a></span>
-                </p>
-                <p class="brown-text">Samsun, Turkey</p>
-                <p>
-                  <b>Degree: </b>Master of Data Science
-                </p>
-                <p>
-                  <b>Date: </b>February 2024 - Now
-                </p>
-
-                <ul>
-                  <p>
-                    <b>Explanation:</b>
-                  <ul>
-                    <li>With the desire to deepen my theoretical knowledge and practical skills in the field, I decided to enroll in the data science master's program. My goal is to gain expertise in areas such as data analysis, machine learning and artificial intelligence so that I can play an important role in data-driven decision-making processes and contribute to innovations in the industry. I believe that this program will not only contribute to my career, but will also help me become a more competent data scientist.
-
-                    </li>
-                  </ul>
-                  </p>
-
-                </ul>
-              </div>
+                <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
+              </label>
             </div>
 
+            <label>
+              
+              <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
+            </label>
 
-          </div>
-          <div class="col s12 m6 l6">
-            <div class="card">
-              <div class="card-content">
-                <p>
-                  <span class="card-title"><a href="https://www.aksaray.edu.tr/" target="_blank" class="teal-text hoverline">AKSARAY UNIVERSITY</a></span>
-                </p>
-                <p class="brown-text">Aksaray, Turkey</p>
-                <p>
-                  <b>Degree: </b>Bachelor of Management Information Systems
-                </p>
-                <p>
-                  <b>Date: </b>September 2018 - June 2022
-                </p>
+            <input type="hidden" name="_redirect" value="#contact">
+            <button class="form-btn" type="submit" data-form-btn>
+              <ion-icon name="paper-plane"></ion-icon>
+              <span>Send Message</span>
+            </button>
+          </form>
 
-                <ul>
-                  <p>
-                    <b>Explanation:</b>
-                  <ul>
-                    <li>During my undergraduate education, I learned many different software languages. I have been involved in many different projects. After graduation, I became more interested in Python and SQL and turned to the field of data science.</li>                   
-                  </ul>
-                  </p>
-
-                </ul>
-              </div>
-            </div>
-
-            
+          <div class="form-message" style="display: none; text-align: center; padding: 20px; background-color: var(--eerie-black-2); border-radius: 14px; margin-top: 20px;">
+            <h3 class="h3" style="color: var(--vegas-gold);">Thank You!</h3>
+            <p style="color: var(--light-gray);">Your message has been sent successfully.</p>
           </div>
 
-    </section>
+        </section>
 
-    <!-- Eight Section: Contact -->
-    <section id="contact" class="section scrollspy full-height">
-      <h3 class="page-title white-text teal">Contact</h3>
-      <div class="container">
-        <p>
-          <a aria-label="View Mert on e-mail" href="mailto:merrtkocak@outlook.com" target="_blank" data-position="top"
-            data-tooltip="View Mert on e-mail" class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-              class="fa fa-envelope"></i><a aria-label="Mert on e-mail" href="mailto:merrtkocak@outlook.com"
-              class="hoverline">merrtkocak@outlook.com</a></a>
-        </p>
-        <p>
-          <a aria-label="View Mert on GitHub" href="https://github.com/benmertkocak" target="_blank"
-            data-position="top" data-tooltip="View Mert on GitHub"
-            class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i class="fa fa-github"></i><a
-              aria-label="Mert on Github" href="https://github.com/benmertkocak" class="hoverline"
-              target="_blank">github.com/benmertkocak</a></a>
-        </p>
-        <p>
-          <a aria-label="View Mert on LinkedIn" href="https://www.linkedin.com/in/mert-kocak/" target="_blank"
-            data-position="top" data-tooltip="View Mert on LinkedIn"
-            class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-              class="fa fa-linkedin"></i><a aria-label="Mert on LinkedIn" href="https://www.linkedin.com/in/mert-kocak/"
-              class="hoverline" target="_blank">linkedin.com/in/mert-kocak</a></a>
-        </p>
-        <p>
-          <a aria-label="View Mert on Kaggle" href="https://www.kaggle.com/benmertkocak" target="_blank"
-            data-position="top" data-tooltip="View Mert on Kaggle"
-            class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i class="fa fa-database"></i><a
-              aria-label="Mert on Kaggle" href="https://www.kaggle.com/benmertkocak" class="hoverline"
-              target="_blank">kaggle.com/benmertkocak</a></a>
-        </p>
-        <p>
-          <a aria-label="View Mert on Medium" href="https://medium.com/@benmertkocak" target="_blank"
-            data-position="top" data-tooltip="View Mert on Medium"
-            class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i class="fa fa-medium"></i><a
-              aria-label="Mert Medium" href="https://medium.com/@benmertkocak" class="hoverline"
-              target="_blank">medium.com/@benmertkocak</a></a>
-        </p>
-        <p>
-          <a aria-label="View Mert on Data Science Portfolio" href="https://www.datascienceportfol.io/mertkocak" target="_blank"
-            data-position="top" data-tooltip="View Mert on Data Science Portfolio"
-            class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i class="fa fa-link"></i><a
-              aria-label="Mert Data Science Portfolio" href="https://www.datascienceportfol.io/mertkocak" class="hoverline"
-              target="_blank">datascienceportfol.io/mertkocak</a></a>
-        </p>
-      </div>
-    </section>
+      </article>
+
+    </div>
+
+    <nav class="navbar">
+
+      <ul class="navbar-list">
+
+        <li class="navbar-item">
+          <button class="navbar-link active" data-nav-link>About</button>
+        </li>
+
+        <li class="navbar-item">
+          <button class="navbar-link" data-nav-link>Resume</button>
+        </li>
+
+        <li class="navbar-item">
+          <button class="navbar-link" data-nav-link>Portfolio</button>
+        </li>
+
+        <li class="navbar-item">
+          <button class="navbar-link" data-nav-link>Blog</button>
+        </li>
+
+        <li class="navbar-item">
+          <button class="navbar-link" data-nav-link>Contact</button>
+        </li>
+
+      </ul>
+
+    </nav>
+
   </main>
 
-  <!-- typed.js -->
-  <script src="assets/vendor/typed.js/typed.min.js"></script>
-  <script type="text/javascript">
-    var typed = new Typed('.typing',{
-      strings: ["Data Scientist","Artificial Intelligence Expert","Machine Learning Engineer","Pythonist",],
-      loop: true,
-      typeSpeed: 90,
-      backSpeed: 50
+
+
+
+
+
+  <!--
+    - custom js link
+  -->
+  <script src="./assets/js/script.js"></script>
+
+  <!--
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS('particles-js', {
+      particles: {
+        number: {
+          value: 80,
+          density: {
+            enable: true,
+            value_area: 800
+          }
+        },
+        color: {
+          value: ['#2196f3', '#e91e63', '#00bcd4', '#ff9800', '#4caf50']
+        },
+        shape: {
+          type: 'circle',
+        },
+        opacity: {
+          value: 9,
+          random: false,
+          anim: {
+            enable: false,
+          }
+        },
+        size: {
+          value: 7,
+          random: true,
+        },
+        line_linked: {
+          enable: true,
+          distance: 150,
+          color: '#808080',
+          opacity: 1,
+          width: 1
+        },
+        move: {
+          enable: true,
+          speed: 5,
+          direction: 'none',
+          random: false,
+          straight: false,
+          out_mode: 'out',
+          bounce: false,
+        }
+      },
+      interactivity: {
+        detect_on: 'window',
+        events: {
+          onhover: {
+            enable: true,
+            mode: 'repulse'
+          },
+          onclick: {
+            enable: true,
+            mode: 'push'
+          },
+          resize: true
+        },
+        modes: {
+          repulse: {
+            distance: 60,
+            duration: 0.5
+          },
+          push: {
+            particles_nb: 3
+          }
+        }
+      },
+      retina_detect: true
     });
   </script>
 
-
-  <!-- jQuery-->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-
-  <!-- Materialize - Compiled and minified JavaScript-->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/js/materialize.min.js"></script>
-  <script>
-    // Materialize - Initializers
-    $(document).ready(function () {
-      $(".scrollspy").scrollSpy()
-      // Initialize collapse button
-      $(".button-collapse").sideNav({
-        menuWidth: 190, // Default is 240
-        edge: "left", // Choose the horizontal origin
-        closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
-      })
-    })
-  </script>
 </body>
 
 </html>
