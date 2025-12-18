@@ -456,9 +456,9 @@ document.addEventListener('DOMContentLoaded', function() {
       
       const repos = await response.json();
       
-      // Fork olmayan repoları filtrele ve yıldıza göre sırala
+      // Fork olmayan ve "benmertkocak" ile başlamayan repoları filtrele ve yıldıza göre sırala
       allRepos = repos
-        .filter(repo => !repo.fork)
+        .filter(repo => !repo.fork && !repo.name.startsWith('benmertkocak'))
         .sort((a, b) => b.stargazers_count - a.stargazers_count);
       
       renderRepos(allRepos);
