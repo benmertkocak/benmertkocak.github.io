@@ -887,9 +887,15 @@ document.addEventListener('DOMContentLoaded', function() {
     
     try {
       const RSS_URL = `https://medium.com/feed/@${MEDIUM_USERNAME}`;
-      const API_URL = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(RSS_URL)}`;
+      const cacheBuster = Date.now(); // Cache bypass için
+      const API_URL = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(RSS_URL)}&t=${cacheBuster}`;
       
-      const response = await fetch(API_URL);
+      const response = await fetch(API_URL, { 
+        cache: 'no-cache',
+        headers: {
+          'Cache-Control': 'no-cache'
+        }
+      });
       const data = await response.json();
       
       if (data.status === 'ok') {
